@@ -1,0 +1,225 @@
+{
+  "name": "ResearchPaper",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the research paper"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of authors"
+    },
+    "abstract": {
+      "type": "string",
+      "description": "Abstract of the paper"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Key terms and concepts"
+    },
+    "publication_year": {
+      "type": "number",
+      "description": "Year of publication"
+    },
+    "journal": {
+      "type": "string",
+      "description": "Journal or conference name"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "URL to the uploaded file"
+    },
+    "file_name": {
+      "type": "string",
+      "description": "Original filename"
+    },
+    "file_type": {
+      "type": "string",
+      "enum": [
+        "pdf",
+        "docx",
+        "pptx",
+        "txt",
+        "md",
+        "jpg",
+        "png",
+        "other"
+      ],
+      "description": "File type"
+    },
+    "file_size": {
+      "type": "number",
+      "description": "File size in bytes"
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "uploading",
+        "uploaded",
+        "processing",
+        "post_processing",
+        "completed",
+        "failed"
+      ],
+      "default": "uploading"
+    },
+    "processing_progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0
+    },
+    "extracted_content": {
+      "type": "object",
+      "properties": {
+        "full_text": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "page_number": {
+                "type": "number"
+              },
+              "content": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "page": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "knowledge_graph": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "properties": {
+                "type": "object"
+              },
+              "source_passages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "page": {
+                      "type": "number"
+                    },
+                    "confidence": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "position": {
+                "type": "object",
+                "properties": {
+                  "x": {
+                    "type": "number"
+                  },
+                  "y": {
+                    "type": "number"
+                  }
+                }
+              },
+              "confidence": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "relationships": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "source_id": {
+                "type": "string"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "properties": {
+                "type": "object"
+              },
+              "source_passages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "page": {
+                      "type": "number"
+                    },
+                    "confidence": {
+                      "type": "number"
+                    }
+                  }
+                }
+              },
+              "confidence": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "version": {
+      "type": "number",
+      "default": 1
+    }
+  },
+  "required": [
+    "title"
+  ]
+}

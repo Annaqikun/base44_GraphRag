@@ -1,0 +1,53 @@
+{
+  "name": "Neo4jConnection",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "type": "string",
+      "enum": [
+        "neo4j",
+        "neo4j+s",
+        "bolt",
+        "bolt+s"
+      ],
+      "default": "neo4j"
+    },
+    "uri": {
+      "type": "string",
+      "description": "Neo4j database URI"
+    },
+    "database": {
+      "type": "string",
+      "default": "neo4j"
+    },
+    "username": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string",
+      "description": "Encrypted password"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "last_connected": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "connection_status": {
+      "type": "string",
+      "enum": [
+        "connected",
+        "disconnected",
+        "error"
+      ],
+      "default": "disconnected"
+    }
+  },
+  "required": [
+    "uri",
+    "username",
+    "password"
+  ]
+} 

@@ -1,0 +1,49 @@
+{
+  "name": "ProjectArtifact",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Artifact name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "document",
+        "graph",
+        "metadata",
+        "chat_session",
+        "schema"
+      ],
+      "description": "Type of artifact"
+    },
+    "file_url": {
+      "type": "string",
+      "description": "Storage URL"
+    },
+    "version": {
+      "type": "number",
+      "default": 1
+    },
+    "size": {
+      "type": "number",
+      "description": "File size in bytes"
+    },
+    "checksum": {
+      "type": "string",
+      "description": "File integrity hash"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "parent_paper_id": {
+      "type": "string",
+      "description": "Reference to source paper"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

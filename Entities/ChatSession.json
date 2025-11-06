@@ -1,0 +1,82 @@
+{
+  "name": "ChatSession",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Session title"
+    },
+    "messages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "user",
+              "assistant"
+            ]
+          },
+          "content": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "citations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "paper_id": {
+                  "type": "string"
+                },
+                "paper_title": {
+                  "type": "string"
+                },
+                "text_snippet": {
+                  "type": "string"
+                },
+                "page": {
+                  "type": "number"
+                },
+                "confidence": {
+                  "type": "number"
+                },
+                "file_url": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "processing": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "paper_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Papers included in this session"
+    }
+  },
+  "required": [
+    "title"
+  ]
+}
